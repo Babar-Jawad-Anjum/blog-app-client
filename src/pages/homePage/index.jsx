@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MainCategories from "../../components/mainCategories";
+import FeaturedPosts from "../../components/featuredPosts";
+import PostsList from "../../components/postsList";
 
 const HomePage = () => {
   return (
@@ -15,13 +17,12 @@ const HomePage = () => {
       <div className="flex items-center justify-between">
         {/* titles */}
         <div className="">
-          <h1 className="text-gray-800 text-2xl md:text-3xl lg:text-4xl font-bold">
+          <h1 className="text-gray-800 text-xl md:text-2xl lg:text-3xl font-bold">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            adipisicing elit.
           </h1>
-          <p className="mt-5 text-md md:text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum
-            facere explicabo enim inventore rerum. Aliquam, aliquid? Incidunt ab
-            rerum molestias.
+          <p className="mt-5 text-md md:text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </p>
         </div>
         {/* animated button */}
@@ -65,7 +66,12 @@ const HomePage = () => {
       {/* MAIN CATEGORIES */}
       <MainCategories />
       {/* FEATURED POST */}
+      <FeaturedPosts />
       {/* POSTS LIST */}
+      <div className="">
+        <h1 className="my-5 text-xl text-gray-600">Recent Posts</h1>
+        <PostsList />
+      </div>
     </div>
   );
 };

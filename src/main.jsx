@@ -7,7 +7,7 @@ import PostListPage from "./pages/postListPage";
 import WritePage from "./pages/writePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/registerPage";
-import SinglePostPage from "./pages/SinglePostPage";
+import SinglePostPage from "./pages/singlePostPage";
 import MainLayout from "./layouts/MainLayout";
 import { ClerkProvider } from "@clerk/clerk-react";
 
