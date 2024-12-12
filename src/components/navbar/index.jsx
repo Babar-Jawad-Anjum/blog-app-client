@@ -11,7 +11,7 @@ import {
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="w-full h-16 md:h-18 flex items-center justify-between">
+    <div className="w-full h-16 flex items-center justify-between">
       {/* LOGO */}
       <Link to="/" className="flex items-center gap-3 text-lg font-bold">
         <Image src="logo.png" alt="logo" width={28} height={28} />
