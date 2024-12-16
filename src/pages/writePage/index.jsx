@@ -46,6 +46,7 @@ const WritePage = () => {
       navigate(`/${res.data.slug}`);
     },
   });
+
   if (!isLoaded) return <div>Loading...</div>;
   // if (isLoaded && !isSignedIn) return <div>You should login.</div>;
 

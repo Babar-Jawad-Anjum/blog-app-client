@@ -37,7 +37,7 @@ const SinglePostPage = () => {
           </h1>
           <div className="flex items-center gap-2 text-gray-400 text-sm">
             <span>Written by</span>
-            <Link className="text-blue-800">{data.user.username}</Link>
+            <Link className="text-blue-800">{data.user?.username}</Link>
             <span>on</span>
             <Link className="text-blue-800">{data.category}</Link>
             <span>{format(data.createdAt)}</span>
@@ -54,7 +54,7 @@ const SinglePostPage = () => {
       <div className="flex flex-xol md:flex-row gap-7">
         {/* text */}
         <div className="lg:text-md flex flex-col gap-6 text-justify">
-          {data.content}
+          <p dangerouslySetInnerHTML={{ __html: data.content }} />
         </div>
         {/* menu */}
         <div className="px-4 h-max sticky top-4">
@@ -62,11 +62,9 @@ const SinglePostPage = () => {
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-6">
               {data.user?.img && (
-                <Image
+                <img
                   src={data.user.img}
-                  className="w-12 h-12 rounded-full object-cover"
-                  width="48"
-                  height="48"
+                  className="w-10 h-10 rounded-full object-cover"
                 />
               )}
               <Link className="text-blue-800">{data.user?.username}</Link>
