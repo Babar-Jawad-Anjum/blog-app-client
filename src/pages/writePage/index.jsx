@@ -7,6 +7,7 @@ import "react-quill-new/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Upload from "../../components/upload";
+import Spinner from "../../components/spinner";
 
 const WritePage = () => {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ const WritePage = () => {
     },
   });
 
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded) return <Spinner />;
   // if (isLoaded && !isSignedIn) return <div>You should login.</div>;
 
   const handleSubmit = (e) => {
@@ -84,7 +85,7 @@ const WritePage = () => {
         </Upload>
         <input
           type="text"
-          placeholder="My Awesome Story"
+          placeholder="Add title here"
           className="text-lg font-semibold bg-transparent outline-none"
           name="title"
         />
@@ -108,10 +109,11 @@ const WritePage = () => {
         <textarea
           name="desc"
           placeholder="A Short Description"
+          rows={4}
           className="p-3 rounded-lg bg-white shadow-md text-sm"
         ></textarea>
         <div className="flex flex-1 ">
-          <div className="flex flex-col gap-2 mr-2">
+          {/* <div className="flex flex-col gap-2 mr-2">
             <Upload
               mediaType="image"
               setProgress={setImageUploadProgress}
@@ -126,7 +128,7 @@ const WritePage = () => {
             >
               ▶
             </Upload>
-          </div>
+          </div> */}
           <ReactQuill
             theme="snow"
             className="rounded-xl bg-white shadow-md flex-1 "
@@ -140,11 +142,11 @@ const WritePage = () => {
             mutation.isPending ||
             (0 < imageUploadProgress && imageUploadProgress < 100)
           }
-          className="bg-blue-800 text-white font-medium rounded-lg mt-3 p-2 w-36 disabled:bg-blue-400 disabled:cursor-not-allowed"
+          className="bg-blue-800 text-white font-medium rounded-lg mt-3 p-2 w-36 disabled:bg-blue-400 disabled:cursor-not-allowed mb-10"
         >
-          {mutation.isPending ? "Loading..." : "Send"}
+          {mutation.isPending ? "Saving..." : "Save"}
         </button>
-        {"Progress:" + imageUploadProgress}
+        {/* {"Progress:" + imageUploadProgress} */}
         {mutation.isError && <span>{mutation.error.message}</span>}
       </form>
     </div>

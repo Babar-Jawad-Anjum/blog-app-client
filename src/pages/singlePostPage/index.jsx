@@ -6,6 +6,7 @@ import Comments from "../../components/comments";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "timeago.js";
+import Spinner from "../../components/spinner";
 
 const fetchPost = async (slug) => {
   const res = await axios.get(
@@ -23,7 +24,7 @@ const SinglePostPage = () => {
     queryFn: () => fetchPost(slug),
   });
 
-  if (isPending) return "Loading";
+  if (isPending) return <Spinner />;
   if (error) return "Something went wrong! " + error.message;
   if (!data) return "Post not found";
 
@@ -69,9 +70,7 @@ const SinglePostPage = () => {
               )}
               <Link className="text-blue-800">{data.user?.username}</Link>
             </div>
-            <p className="text-sm text-gray-500">
-              Lorem ipsum dolor sit amet consectetur elit.
-            </p>
+            <p className="text-sm text-gray-500">Follow us on socials !</p>
             <div className="flex gap-2">
               <Link>
                 <Image src="facebook.svg" />

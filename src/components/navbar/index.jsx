@@ -36,27 +36,51 @@ const Navbar = () => {
         </div>
         {/* MOBILE MENU LIST */}
         <div
-          className={`w-full mt-16 flex flex-col items-center justify-center gap-8 font-medium absolute top-16 transition-all ease-in-out ${
+          className={`bg-[#E6E6FF] z-50 py-20 h-screen w-full flex flex-col items-center gap-8 font-medium absolute top-16 transition-all ease-in-out ${
             open ? "-right-0" : "-right-[100%]"
           }`}
         >
-          <Link to="/">Home</Link>
-          <Link to="/">Trending</Link>
-          <Link to="/">Most Popular</Link>
-          <Link to="/">About</Link>
           <Link to="/">
-            <button className="py-2 px-4 rounded-2xl bg-blue-800 text-white">
-              Login 👋
-            </button>
+            <SignedOut>
+              <Link to="/login" onClick={() => setOpen((prev) => !prev)}>
+                <button className="py-2 px-4 rounded-2xl bg-blue-800 text-white">
+                  Login 👋
+                </button>
+              </Link>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </Link>
+          <Link onClick={() => setOpen((prev) => !prev)} to="/">
+            Home
+          </Link>
+          <Link
+            onClick={() => setOpen((prev) => !prev)}
+            to="/posts?sort=trending"
+          >
+            Trending
+          </Link>
+          <Link
+            onClick={() => setOpen((prev) => !prev)}
+            to="/posts?sort=popular"
+          >
+            Most Popular
+          </Link>
+          <Link
+            onClick={() => setOpen((prev) => !prev)}
+            to="/posts?cat=web-design"
+          >
+            Web Design
           </Link>
         </div>
       </div>
       {/* DESKTOP MENU */}
       <div className="hidden md:flex items-center text-sm gap-8 font-medium">
         <Link to="/">Home</Link>
-        <Link to="/">Trending</Link>
-        <Link to="/">Most Popular</Link>
-        <Link to="/">About</Link>
+        <Link to="/posts?sort=trending">Trending</Link>
+        <Link to="/posts?sort=popular">Most Popular</Link>
+        <Link to="/posts?cat=web-design">Web Design</Link>
         <SignedOut>
           <Link to="/login">
             <button className="py-2 px-4 rounded-2xl bg-blue-800 text-white">

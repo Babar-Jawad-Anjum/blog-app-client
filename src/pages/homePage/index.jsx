@@ -1,32 +1,28 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import MainCategories from "../../components/mainCategories";
 import FeaturedPosts from "../../components/featuredPosts";
 import PostsList from "../../components/postsList";
+import BreadCrumb from "../../components/breadcrumb";
 
 const HomePage = () => {
   return (
     <div className="mt-3 flex flex-col gap-3">
-      {/* BREADCRUMB */}
-      <div className="flex gap-3 text-xs">
-        <Link to="/">Home</Link>
-        <span>▫</span>
-        <span className="text-blue-800">Blogs and Articles</span>
-      </div>
       {/* INTRODUCTION */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row items-center justify-between">
         {/* titles */}
-        <div className="">
-          <h1 className="text-gray-800 text-xl md:text-2xl lg:text-3xl font-bold">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            adipisicing elit.
+        <div className="my-8">
+          <h1 className="text-gray-800 text-xl md:text-2xl lg:text-3xl font-bold w-[95%] md:w-[85] mb-6">
+            Share Your Ideas, Amplify Your Voice, and Inspire the World on Your
+            Blogging Platform.
           </h1>
-          <p className="mt-5 text-md md:text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <p className="mt-5 text-md md:text-lg w-[95%] md:w-[85%]">
+            Explore insightful articles, share your unique stories, and connect
+            with readers worldwide. Start your blogging journey here and make
+            your voice heard.
           </p>
         </div>
         {/* animated button */}
-        <Link to="/write" className="hidden md:block relative">
+        <Link to="/write" className="relative">
           <svg
             viewBox="0 0 200 200"
             width="170"
@@ -66,9 +62,12 @@ const HomePage = () => {
       {/* MAIN CATEGORIES */}
       <MainCategories />
       {/* FEATURED POST */}
-      <FeaturedPosts />
+      <div>
+        <h1 className="my-5 text-xl text-gray-600">Featured Posts</h1>
+        <FeaturedPosts />
+      </div>
       {/* POSTS LIST */}
-      <div className="">
+      <div>
         <h1 className="my-5 text-xl text-gray-600">Recent Posts</h1>
         <PostsList />
       </div>

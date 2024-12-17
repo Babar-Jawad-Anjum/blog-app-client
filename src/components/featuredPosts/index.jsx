@@ -3,6 +3,7 @@ import Image from "../image";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "timeago.js";
+import Spinner from "../spinner";
 
 const fetchPost = async () => {
   const res = await axios.get(
@@ -20,8 +21,8 @@ const FeaturedPosts = () => {
     queryFn: () => fetchPost(),
   });
 
-  if (isPending) return "Loading";
   if (error) return "Something went wrong! " + error.message;
+  if (isPending) return <Spinner />;
 
   const posts = data?.posts;
   if (!posts || posts?.length === 0) return;

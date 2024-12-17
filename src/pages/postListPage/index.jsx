@@ -7,15 +7,15 @@ const PostListPage = () => {
 
   return (
     <div>
-      <h1 className="mb-5 text-lg">Development Blog</h1>
+      <h1 className="my-5 text-lg">Blog Details</h1>
       <button
         onClick={() => setOpen((prev) => !prev)}
         className="bg-blue-800 text-xs text-white px-4 py-2 rounded-xl mb-4  md:hidden"
       >
-        {open ? "Close" : "FIlter or Search"}
+        {open ? "Close" : "Filter or Search"}
       </button>
       <div className="flex gap-6 flex-col-reverse md:flex-row">
-        <div className="">
+        <div className="flex-1">
           <PostList />
         </div>
         <div className={`${open ? "block" : "hidden"} md:block`}>
