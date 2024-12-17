@@ -88,8 +88,8 @@ const Comments = ({ postId }) => {
                 desc: `${mutation.variables.desc} (Sending...)`,
                 createdAt: new Date(),
                 user: {
-                  img: user.imageUrl,
-                  username: user.username,
+                  img: user?.imageUrl,
+                  username: user?.username,
                 },
               }}
             />

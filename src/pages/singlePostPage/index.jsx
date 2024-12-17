@@ -52,7 +52,7 @@ const SinglePostPage = () => {
         )}
       </div>
       {/* content */}
-      <div className="flex flex-xol md:flex-row gap-7">
+      <div className="flex flex-col md:flex-row gap-7">
         {/* text */}
         <div className="lg:text-md flex flex-col gap-6 text-justify">
           <p dangerouslySetInnerHTML={{ __html: data.content }} />
