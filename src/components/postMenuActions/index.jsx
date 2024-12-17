@@ -91,6 +91,7 @@ const PostMenuActions = ({ post }) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["post", post.slug] });
+      queryClient.invalidateQueries({ queryKey: ["featuredPosts"] });
     },
     onError: (error) => {
       toast.error(error.response.data);

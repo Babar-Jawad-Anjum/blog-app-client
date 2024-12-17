@@ -22,7 +22,10 @@ const PostListItem = ({ post }) => {
         </Link>
         <div className="flex items-center gap-2 text-gray-400 text-xs">
           <span>Written by</span>
-          <Link className="text-blue-800">
+          <Link
+            className="text-blue-800"
+            to={`/posts?author=${post.user.username}`}
+          >
             {post?.user?.username?.toUpperCase()}
           </Link>
           <span>on</span>

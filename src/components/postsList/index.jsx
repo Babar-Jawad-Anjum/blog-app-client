@@ -2,15 +2,20 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import PostListItem from "../postListItem";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useSearchParams } from "react-router-dom";
 
-const fetchPosts = async (pageParams) => {
+const fetchPosts = async (pageParams, searchParams) => {
+  const searchParamsObj = Object.fromEntries([...searchParams]);
+
   const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/posts`, {
-    params: { page: pageParams, limit: 2 },
+    params: { page: pageParams, limit: 10, ...searchParamsObj },
   });
   return res.data;
 };
 
 const PostsList = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const {
     data,
     // error,
@@ -20,8 +25,8 @@ const PostsList = () => {
     // isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["posts"],
-    queryFn: ({ pageParam = 1 }) => fetchPosts(pageParam),
+    queryKey: ["posts", searchParams?.toString()],
+    queryFn: ({ pageParam = 1 }) => fetchPosts(pageParam, searchParams),
     initialPageParam: 1,
     getNextPageParam: (lastPage, pages) =>
       lastPage.hasMore ? pages.length + 1 : undefined,
